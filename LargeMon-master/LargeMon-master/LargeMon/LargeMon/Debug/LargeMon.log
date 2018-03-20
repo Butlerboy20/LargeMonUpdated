@@ -1,0 +1,31 @@
+﻿  UserInterfaces.cpp
+  PhysicalAttributeGenerator.cpp
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(19): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(29): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(33): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(44): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(49): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(54): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(62): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(66): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(67): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(71): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(72): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(79): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(85): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(89): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+  Main.cpp
+c:\users\dan\source\repos\largemon\largemon\main.cpp(11): error C2512: 'LargeMon': no appropriate default constructor available
+  c:\users\dan\source\repos\largemon\largemon\largemon.h(9): note: see declaration of 'LargeMon'
+c:\users\dan\source\repos\largemon\largemon\main.cpp(19): error C2039: 'setID': is not a member of 'LargeMon'
+  c:\users\dan\source\repos\largemon\largemon\largemon.h(9): note: see declaration of 'LargeMon'
+c:\users\dan\source\repos\largemon\largemon\main.cpp(19): error C3867: 'PhysicalAttributeGenerator::gen_largeMonID': non-standard syntax; use '&' to create a pointer to member
+c:\users\dan\source\repos\largemon\largemon\main.cpp(20): error C3867: 'PhysicalAttributeGenerator::gen_random_size': non-standard syntax; use '&' to create a pointer to member
+  LargeMon.cpp
+  Generating Code...
+c:\users\dan\source\repos\largemon\largemon\largemon.cpp(42): error C4716: 'LargeMon::gen_largeMonID': must return a value
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(37): warning C4715: 'PhysicalAttributeGenerator::gen_randomHP': not all control paths return a value
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(58): warning C4715: 'PhysicalAttributeGenerator::gen_baseHP': not all control paths return a value
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(76): warning C4715: 'PhysicalAttributeGenerator::gen_BaseAttack': not all control paths return a value
+c:\users\dan\source\repos\largemon\largemon\physicalattributegenerator.cpp(97): warning C4715: 'PhysicalAttributeGenerator::assign_MissChance': not all control paths return a value

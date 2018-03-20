@@ -1,0 +1,9 @@
+﻿  Main.cpp
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(37): warning C4101: 'missChance': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(18): warning C4101: 'battle': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(35): warning C4101: 'baseAttack': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(34): warning C4101: 'baseHP': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(33): warning C4101: 'size': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(36): warning C4101: 'specAttack': unreferenced local variable
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(45): error C4700: uninitialized local variable 'interface' used
