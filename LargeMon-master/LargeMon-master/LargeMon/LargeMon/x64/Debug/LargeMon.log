@@ -1,9 +1,11 @@
-﻿  Main.cpp
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(67): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(37): warning C4101: 'missChance': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(18): warning C4101: 'battle': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(35): warning C4101: 'baseAttack': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(34): warning C4101: 'baseHP': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(33): warning C4101: 'size': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(36): warning C4101: 'specAttack': unreferenced local variable
-c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\main.cpp(45): error C4700: uninitialized local variable 'interface' used
+﻿  LargeMon.cpp
+  Battle.cpp
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\battle.cpp(145): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\battle.cpp(183): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\dan\source\repos\largemon-master\largemon-master\largemon\largemon\battle.cpp(194): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  UserInterfaces.cpp
+  PhysicalAttributeGenerator.cpp
+  Main.cpp
+  LargeMon.vcxproj -> C:\Users\Dan\source\repos\LargeMon-master\LargeMon-master\LargeMon\x64\Debug\LargeMon.exe

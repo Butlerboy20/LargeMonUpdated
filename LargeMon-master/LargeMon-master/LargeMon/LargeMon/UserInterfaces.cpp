@@ -48,7 +48,13 @@ int UserInterfaces::displayChooseLargeMon() {
 	cout << "Please choose your LargeMon, select its number:" << endl;
 	for (int i = 1; i < 10; i++) {
 		cout << i << ": LargeMon" << endl;
-		//pass generated vector to here.
+
+		//pass generated vector to here.	
+	//loop for printing from vector
+	//vector<LargeMon>::iterator it;
+	//for (it = generatedLargeMon.begin(); it != generatedLargeMon.end(); ++it) {
+		//For each LargeMon, print out their info
+	//	it->printLargeMonStats();
 	}
 	cout << "\n";
 	cin >> LargeMonOption;
@@ -62,7 +68,7 @@ int UserInterfaces::displayBattle() {
 	cin >> battleOption;
 	while (battleOption < 1 || battleOption > 4 || cin.fail()) //error check for incorrect keyboard input
 	{
-		cout << "Input 1 for a fire type, 2 for a water type, 3 for a wood type, 4 return to main \n";
+		cout << "Input 1 for a normal attack, 2 for a special attack, 3 to heal, 4 return to main \n";
 		cin.clear();
 		cin.ignore(256, '\n');
 		cin >> battleOption;
@@ -72,6 +78,7 @@ int UserInterfaces::displayBattle() {
 
 int UserInterfaces::displayInfo() {
 	cout << "LargeMon Information & Help Screen" << endl;
+	cout << "                   ---              " << endl;
 	cout << "LargeMon is a fun and addictive game where you battle LargeMon (animal like creatures) against" << endl;
 	cout << "each other striving to become the best trainer of them all!" << endl;
 	cout << "                   ---              " << endl;
@@ -87,7 +94,7 @@ int UserInterfaces::displayInfo() {
 	cout << "deal 1.5x damage. For instance Fire deals 1.5x damage to wood. Be careful though as you are limited to 3 special attack per battle " << endl;
 	cout << "The healing ability restores a large portion of HP to your LargeMon which could save you. Your miss chance is significantly reduced though as a consequence" << endl;
 	cout << "                   ---              " << endl;
-	cout << "1.Return to Main Menu" << endl;
+	cout << "1.Return to Main Menu\n\n" << endl;
 	cin >> returnOption;
 	return returnOption;
 }

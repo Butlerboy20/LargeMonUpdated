@@ -73,3 +73,14 @@ void LargeMon::printLargeMonStats() {
 	cout << "MissChance :  " << missChance << endl;
 }
 
+void LargeMon::printAILargeMonStats() {
+	cout << "Your Opposing LargeMon is :" << name << endl;
+	cout << "Type : " << type << endl;
+	cout << "Weakness : " << weakness << endl;
+	cout << "Size :  " << size << endl;
+	cout << "Health :  " << baseHP << endl;
+	cout << "AttackPoints :  " << baseAttack << endl;
+	cout << "SpecialAttack :  " << specAttack << endl;
+	cout << "MissChance :  " << missChance << endl;
+}
+

@@ -26,21 +26,12 @@ int main() {
 	pTypes.push_back("Wood");
 
 	//vector to store generated largeMon
-	vector<LargeMon> generatedLargeMon;
-	string name;
-	string Type;
-	string weakness;
-	float size;
-	int baseHP;
-	int baseAttack;
-	int specAttack;
-	int missChance;
-
-	LargeMon *g1;
+	/**vector <LargeMon> generatedLargeMon;
 
 	for (int i = 0; i < 10; i++) {
+		
+		LargeMon*g1 = new LargeMon;
 
-		g1 = new LargeMon;
 		g1->setName(type);
 		g1->setType(pTypes[interface.typeOption]);
 		g1->setWeakness(generator.genWeakness(interface.typeOption));
@@ -54,10 +45,10 @@ int main() {
 
 	//loop for printing from vector
 	vector<LargeMon>::iterator it;
-	for ( it = generatedLargeMon.begin(); it != generatedLargeMon.end(); ++it ) {
+	for ( it = generatedLargeMon.begin(); it != generatedLargeMon.end(); it++ ) {
 	 //For each LargeMon, print out their info
 	it->printLargeMonStats();
-	}
+	}*/
 	
 
 	//used to pull the correct largemon from the vector.
@@ -113,7 +104,7 @@ int main() {
 			largemon.printLargeMonStats();
 			cout << "Your LargeMon has been created \n";
 			cout << "Would you like to save your new friend or abandon it? Yes/No?" << endl;
-			cout << "Please Enter y or n" << endl;
+			cout << "Please Enter y to save or n to abandon" << endl;
 
 			//user input checks to see if largeMon needs to be saved to the vector.
 			char saveOrNot;
@@ -150,8 +141,6 @@ int main() {
 			}
 			//this then displays the battle options
 			interface.displayBattle();
-			
-			//cases to deal with calling attacking methods from the battle class.
 
 			break;
 

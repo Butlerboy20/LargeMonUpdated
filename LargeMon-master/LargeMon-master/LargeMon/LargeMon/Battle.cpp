@@ -4,6 +4,7 @@
 #include "LargeMon.h"
 #include "Battle.h"
 #include "UserInterfaces.h"
+#include <windows.h>
 #include <cstdlib>
 #include <ctime>
 #include <time.h>
@@ -15,55 +16,90 @@ Battle battle;
 
 LargeMon generateAIlargemon(int randomTypeNumber) {
 
-		vector <string> fTypes;
-		fTypes.push_back("");
-		fTypes.push_back("Fire");
-		fTypes.push_back("Water");
-		fTypes.push_back("Wood");
+	vector <string> fTypes;
+	fTypes.push_back("");
+	fTypes.push_back("Fire");
+	fTypes.push_back("Water");
+	fTypes.push_back("Wood");
 
-		AIlargemon.setName(generator.genAIName(randomTypeNumber));
-		AIlargemon.setType(fTypes[randomTypeNumber]);
-		AIlargemon.setWeakness(generator.genWeakness(randomTypeNumber));
-		AIlargemon.setSize(generator.gen_random_size());
-		AIlargemon.setHP(generator.gen_baseHP());
-		AIlargemon.setAttack(generator.gen_BaseAttack());
-		AIlargemon.setSpecAttack(generator.gen_SpecAttack());
-		AIlargemon.setMissChance(generator.assign_MissChance());
+	AIlargemon.setName(generator.genAIName(randomTypeNumber));
+	AIlargemon.setType(fTypes[randomTypeNumber]);
+	AIlargemon.setWeakness(generator.genWeakness(randomTypeNumber));
+	AIlargemon.setSize(generator.gen_random_size());
+	AIlargemon.setHP(generator.gen_baseHP());
+	AIlargemon.setAttack(generator.gen_BaseAttack());
+	AIlargemon.setSpecAttack(generator.gen_SpecAttack());
+	AIlargemon.setMissChance(generator.assign_MissChance());
 
-		//prints out AI stats to screen
-		AIlargemon.printLargeMonStats();
-		cout << "\n\n\n";
+	//prints out AI stats to screen
+	AIlargemon.printAILargeMonStats();
+	cout << "\n\n\n";
 
-		//AIlargemon = generateAIlargemon(randomTypeNumber);
+	//AIlargemon = generateAIlargemon(randomTypeNumber);
 
-		return AIlargemon;
+	return AIlargemon;
 }
 
-void performBattle(LargeMon mylargeMon, LargeMon generatedLargeMon) {
-
-	myLargeMon = mylargeMon;
-	AIlargemon = generatedLargeMon;
-
+void performBattle(LargeMon generatedLargeMon, LargeMon AIgeneratedLargeMon) {
+	myLargeMon = generatedLargeMon;
+	AIlargemon= AIgeneratedLargeMon;
 }
 
-//to go into main class
-/**do {
-		performBattle();
 
-	switch (battleInt.battleOption);
+
+/**bool performBattle(LargeMon* generatedLargeMon, LargeMon* AIgeneratedLargeMon, int battleCount) {
+
+
+	while (AIgeneratedLargeMon->getHP() && generatedLargeMon->getHP() > 0)
 	{
-		case 1:
-		LargeMonAttack();
-		cout << AICurrentHP << endl;
+		if (battleCount == 1) {
+			cout << "Its Your Opponents Turn to Attack \n\n" << endl;
 
-		AILargeMonAttack();
-		cout << LargeMonCurrentHP << endl;
+			Sleep(1000);
+			//AI attack to go here
+			battleCount--;
+		}
 
-		case 2:
-			
+		else if (battleCount == 0) {
+			cout << "Its Your Turn to Attack now, please choose your move \n\n" << endl;
+			//User Attack to go here
+
+			switch (battleInt.battleOption)
+			{
+			case 1:
+				cout << "Player chooses to use a normal attack\n\n";
+				LargeMonAttack();
+				//print out updated stats.
+				break;
+
+			case 2:
+				cout << "Player chooses to use it special attack\n\n";
+				//add a do while loop with special attack limiter if i get time.
+				specAttack();
+				//print out updated stats
+				break;
+			case 3:
+				cout << "Player chooses to use its healing ability\n\n";
+
+				heal();
+				// print out updated stats
+				break;
+			}
+		}
+		else if (AIgeneratedLargeMon->getHP() <= 0) {
+
+			cout << "You Win. Well done trainer. Continue your Journey forward \n\n";
+		}
+
+		else if (generatedLargeMon->getHP() <= 0) {
+
+			cout << "You lose. Hope you enjoyed, please try again.\n\n" << endl;
+
+		}
 	}
-} 
-while (LargeMon.getHP() >= 0 && AILargemon.getHP () >= 0);*/
+	return false;
+}*/
+
 
 
 int LargeMonAttack() {
@@ -99,6 +135,13 @@ int AIAttack() {
 	}
 
 int AIChooseMove() {
+	
+	vector <string> Moves;
+	Moves.push_back("");
+	Moves.push_back("Attack");
+	Moves.push_back("SpecialAttack");
+	Moves.push_back("Heal");
+	
 	srand(time(NULL));
 	int randomAImove = (rand() % 3) + 1;
 	return randomAImove;
@@ -110,12 +153,13 @@ int specAttack() {
 		int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getSpecAttack();
 		AIcurrentHP = AIlargemon.getHP();
 		return AIcurrentHP;
+		cout << "Its Super Effective\n\n";
 	}
 	else {
 		int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getAttack();
 		AIcurrentHP = AIlargemon.getHP();
 		return AIcurrentHP;
-		cout << "Your Attack was not very effective" << endl;
+		cout << "Your Attack was not very effective\n\n";
 	}
 }
 

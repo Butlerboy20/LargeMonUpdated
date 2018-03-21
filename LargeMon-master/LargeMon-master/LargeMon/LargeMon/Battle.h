@@ -3,15 +3,19 @@
 #include <string>
 
 LargeMon generateAIlargemon(int randomTypeNumber);
-void performBattle(LargeMon myLargMon, LargeMon generatedMon);
-
+//bool performBattle(LargeMon* generatedLargeMon, LargeMon* AIgeneratedLargeMon, int battleCount);
+void performBattle(LargeMon generatedLargeMon, LargeMon AIgeneratedLargeMon);
 class Battle {
 public :
 	
 	int LargeMonAttack();
 	int AIAttack();
+	int AIChooseMove();
+	int AIspecAttack();
 	int heal();
+	int AIheal();
 	int specAttack();
+
 	void returnBattleResult();
 	void updateBattleCount();
 	

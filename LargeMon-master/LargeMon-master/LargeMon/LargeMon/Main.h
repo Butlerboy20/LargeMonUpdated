@@ -3,7 +3,7 @@
 
 class Main {
 public:
-	void printLargeMonInfo();
+
 private:
 	char saveOrNot;
 	

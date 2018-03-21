@@ -18,7 +18,7 @@ public:
 	int assign_MissChance();
 
 private:
-	vector<string> fireNames = { "FlameMon", "FlareMon", "CombustaMon", "TarnMon", "CharMon", "FyreMon" , "PhlogisMon", "PyroMon"};
-	vector<string> waterNames = { "SplashMon", "SquirtMon", "DuckMon", "WetMon", "DampMon", "MoistMon" };
-	vector<string> woodNames = { "BarkMon", "TrunkMon", "BranchMon", "EdwardWoodWoodMon", "WoodMon", "LumberMon" };
+	vector<string> fireNames = {"PhlogisMon", "FlameMon", "FlareMon", "CombustaMon", "TarnMon", "CharMon", "FyreMon" , "PyroMon"};
+	vector<string> waterNames = {"WetMon", "SplashMon", "SquirtMon", "DuckMon", "DampMon", "MoistMon" };
+	vector<string> woodNames = {"BranchMon", "BarkMon", "TrunkMon", "EdwardWoodWoodMon", "WoodMon", "LumberMon" };
 };

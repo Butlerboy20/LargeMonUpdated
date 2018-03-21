@@ -24,6 +24,7 @@ class LargeMon {
 		int getMissChance();
 		void generate();
 		void printLargeMonStats();
+		void printAILargeMonStats();
 	
 	private:
 		string name;
