@@ -43,8 +43,9 @@ int UserInterfaces::displayGenerator() {
 
 //list the created Largemon so that the user could select them from a list.
 
-//TO DO needs to be passed the vector of created largemon once i have saved them to a file
-int UserInterfaces::displayChooseLargeMon() {
+//Would have been used to save Largemon to a vector and pick from the list
+
+/**int UserInterfaces::displayChooseLargeMon() {
 	cout << "Please choose your LargeMon, select its number:" << endl;
 	for (int i = 1; i < 10; i++) {
 		cout << i << ": LargeMon" << endl;
@@ -60,20 +61,27 @@ int UserInterfaces::displayChooseLargeMon() {
 	cin >> LargeMonOption;
 	return LargeMonOption;
 	
-}
+}*/
 
 int UserInterfaces::displayBattle() {
+	cout << "Choose Your Move\n";
 	cout << " 1. Attack\n 2. Special Attack\n 3. Heal\n 4. Return to Main\n";
 	cout << "\n\n";
 	cin >> battleOption;
-	while (battleOption < 1 || battleOption > 4 || cin.fail()) //error check for incorrect keyboard input
-	{
-		cout << "Input 1 for a normal attack, 2 for a special attack, 3 to heal, 4 return to main \n";
+	if (battleOption >= 1 || battleOption <= 4) {
+		return battleOption;
 		cin.clear();
-		cin.ignore(256, '\n');
 		cin >> battleOption;
 	}
-	return battleOption;
+	else {
+		while (battleOption < 1 || battleOption > 4 || cin.fail()) //error check for incorrect keyboard input
+		{
+			cout << "Input 1 for a normal attack, 2 for a special attack, 3 to heal, 4 return to main \n";
+			cin.clear();
+			cin.ignore(256, '\n');
+			cin >> battleOption;
+		}
+	}
 }
 
 int UserInterfaces::displayInfo() {
@@ -91,7 +99,9 @@ int UserInterfaces::displayInfo() {
 	cout << "                   ---              " << endl;
 	cout << "Attacking hits your opponent for HP equal to your LargeMons attack points, however every LargeMon has a percentage miss chance so" << endl;
 	cout << "you are not gauranteed a hit. Special Attack is a far more powerful attack that against a LargeMon who is weak to a certain type, the attack will" << endl;
-	cout << "deal 1.5x damage. For instance Fire deals 1.5x damage to wood. Be careful though as you are limited to 3 special attack per battle " << endl;
+	cout << "deal 1.5x damage. For instance Fire deals 1.5x damage to wood. Be careful though as you are limited to 2 special attack per battle " << endl;
+	cout << "If you use your special attack against a largemon that doesnt have your type as its weakness, you will use you standard attack." << endl;
+	cout << "Dont Waste them" << endl;
 	cout << "The healing ability restores a large portion of HP to your LargeMon which could save you. Your miss chance is significantly reduced though as a consequence" << endl;
 	cout << "                   ---              " << endl;
 	cout << "1.Return to Main Menu\n\n" << endl;

@@ -9,7 +9,6 @@ public :
 	//Generator Screen to be displayed
 		int displayGenerator();
 
-		int displayChooseLargeMon();
 		int LargeMonOption;
 
 	//Battle Screen displays

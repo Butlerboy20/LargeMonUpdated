@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PhysicalAttributeGenerator.h"
 #include "Main.h"
-#include "LargeMon.h"
 #include "Battle.h"
 #include "UserInterfaces.h"
 #include <windows.h>
@@ -13,8 +12,9 @@ PhysicalAttributeGenerator generator;
 LargeMon myLargeMon, AIlargemon;
 UserInterfaces battleInt;
 Battle battle;
+int specLimit = 0;
 
-LargeMon generateAIlargemon(int randomTypeNumber) {
+LargeMon Battle::generateAIlargemon(int randomTypeNumber) {
 
 	vector <string> fTypes;
 	fTypes.push_back("");
@@ -26,7 +26,8 @@ LargeMon generateAIlargemon(int randomTypeNumber) {
 	AIlargemon.setType(fTypes[randomTypeNumber]);
 	AIlargemon.setWeakness(generator.genWeakness(randomTypeNumber));
 	AIlargemon.setSize(generator.gen_random_size());
-	AIlargemon.setHP(generator.gen_baseHP());
+	AIlargemon.setMaxHP(generator.gen_baseHP());
+	AIlargemon.setHP(AIlargemon.getMaxHP());
 	AIlargemon.setAttack(generator.gen_BaseAttack());
 	AIlargemon.setSpecAttack(generator.gen_SpecAttack());
 	AIlargemon.setMissChance(generator.assign_MissChance());
@@ -40,165 +41,144 @@ LargeMon generateAIlargemon(int randomTypeNumber) {
 	return AIlargemon;
 }
 
-void performBattle(LargeMon generatedLargeMon, LargeMon AIgeneratedLargeMon) {
-	myLargeMon = generatedLargeMon;
-	AIlargemon= AIgeneratedLargeMon;
+void Battle::performBattle(LargeMon * generatedLargeMon, LargeMon * AIgeneratedLargeMon) {
+	myLargeMon = *generatedLargeMon;
 }
 
-
-
-/**bool performBattle(LargeMon* generatedLargeMon, LargeMon* AIgeneratedLargeMon, int battleCount) {
-
-
-	while (AIgeneratedLargeMon->getHP() && generatedLargeMon->getHP() > 0)
-	{
-		if (battleCount == 1) {
-			cout << "Its Your Opponents Turn to Attack \n\n" << endl;
-
-			Sleep(1000);
-			//AI attack to go here
-			battleCount--;
-		}
-
-		else if (battleCount == 0) {
-			cout << "Its Your Turn to Attack now, please choose your move \n\n" << endl;
-			//User Attack to go here
-
-			switch (battleInt.battleOption)
-			{
-			case 1:
-				cout << "Player chooses to use a normal attack\n\n";
-				LargeMonAttack();
-				//print out updated stats.
-				break;
-
-			case 2:
-				cout << "Player chooses to use it special attack\n\n";
-				//add a do while loop with special attack limiter if i get time.
-				specAttack();
-				//print out updated stats
-				break;
-			case 3:
-				cout << "Player chooses to use its healing ability\n\n";
-
-				heal();
-				// print out updated stats
-				break;
-			}
-		}
-		else if (AIgeneratedLargeMon->getHP() <= 0) {
-
-			cout << "You Win. Well done trainer. Continue your Journey forward \n\n";
-		}
-
-		else if (generatedLargeMon->getHP() <= 0) {
-
-			cout << "You lose. Hope you enjoyed, please try again.\n\n" << endl;
-
-		}
-	}
-	return false;
-}*/
-
-
-
-int LargeMonAttack() {
-	if (AIlargemon.getMissChance() < 50) {
-		int AICurrentHP = AIlargemon.getHP() - myLargeMon.getAttack();
-		AICurrentHP = AIlargemon.getHP();
-		int AImissChance = AIlargemon.getMissChance() + 10;
-		return AICurrentHP;
-		return AImissChance;
-	}
-	else {
-		int AImissChance = AIlargemon.getMissChance() - 10;
-		int AICurrentHP = AIlargemon.getHP();
-		return AICurrentHP;
-		return AImissChance;
-	}
-}
-
-
-int AIAttack() {
-	if (myLargeMon.getMissChance() >= 50) {
-		int LargeMonCurrentHP = myLargeMon.getHP() - AIlargemon.getAttack();
-		int LargeMonmissChance = myLargeMon.getMissChance() + 10;
-		return LargeMonCurrentHP;
-		return LargeMonmissChance;
-	}
-	else {
-		int LargeMonmissChance = myLargeMon.getMissChance() - 10;
-		int LargeMonCurrentHP = myLargeMon.getHP();
-		return LargeMonCurrentHP;
-		return LargeMonmissChance;
-		}
-	}
-
-int AIChooseMove() {
-	
-	vector <string> Moves;
-	Moves.push_back("");
-	Moves.push_back("Attack");
-	Moves.push_back("SpecialAttack");
-	Moves.push_back("Heal");
-	
+int Battle:: AIMove() {
 	srand(time(NULL));
 	int randomAImove = (rand() % 3) + 1;
 	return randomAImove;
 }
 
-int specAttack() {
-	if (AIlargemon.getWeakness() == myLargeMon.getType())
+void Battle::AIChosenMove(int random) {
+	int randomAImove = (rand() % 3) + 1;
+	if (randomAImove == 1)
 	{
-		int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getSpecAttack();
-		AIcurrentHP = AIlargemon.getHP();
-		return AIcurrentHP;
-		cout << "Its Super Effective\n\n";
+		cout << "Opponent LargeMon Chooses to attack" << endl;
+		AIAttack();
+	}
+	else if (randomAImove == 2)
+	{
+		cout << "Opponent LargeMon Chooses to use its Special attack" << endl;
+		AIspecAttack();
+	}
+	else if (randomAImove == 3)
+	{
+		cout << "Opponent LargeMon Chooses to Heal" << endl;
+		AIheal();
+	}
+}
+
+void Battle:: LargeMonAttack() {
+	if (AIlargemon.getMissChance() < 50) {
+		cout << "Your Attack Hit\n" << endl;
+		int AICurrentHP = AIlargemon.getHP() - myLargeMon.getAttack();
+		AIlargemon.setHP(AICurrentHP);
+		int AImissChance = AIlargemon.getMissChance() + 10;
+		AIlargemon.setMissChance(AImissChance);
 	}
 	else {
+		cout << "Your Attack missed\n" << endl;
+		int AImissChance = AIlargemon.getMissChance() - 10;
+		int AICurrentHP = AIlargemon.getHP();
+		AIlargemon.setHP(AICurrentHP);
+		AIlargemon.setMissChance(AImissChance);
+	}
+}
+
+
+void Battle:: AIAttack() {
+	if (myLargeMon.getMissChance() < 50) {
+		cout << "The AI Attack Hit\n" << endl;
+		int LargeMonCurrentHP = myLargeMon.getHP() - AIlargemon.getAttack();
+		int LargeMonmissChance = myLargeMon.getMissChance() + 10;
+		myLargeMon.setHP(LargeMonCurrentHP);
+		myLargeMon.setMissChance(LargeMonmissChance);
+	}
+	else {
+		cout << "The AIs Attack miss\n" << endl;
+		int LargeMonmissChance = myLargeMon.getMissChance() - 10;
+		int LargeMonCurrentHP = myLargeMon.getHP();
+		myLargeMon.setHP(LargeMonCurrentHP);
+		myLargeMon.setMissChance(LargeMonmissChance);
+		}
+	}
+
+
+	
+
+void Battle:: specAttack() {
+	if (AIlargemon.getWeakness() == myLargeMon.getType())
+	{
+		if (specLimit < 2) {
+			specLimit++;
+			int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getSpecAttack();
+			AIlargemon.setHP(AIcurrentHP);
+			cout << "Its Super Effective\n\n";
+			//if special attack lands, increase opponents miss Chance
+			int AImissChance = AIlargemon.getMissChance() + 30;
+			AIlargemon.setMissChance(AImissChance);
+		}
+		else {
+			cout << "Your Have used Special too many times\n\n";
+			int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getAttack();
+			AIlargemon.setHP(AIcurrentHP);
+			
+		}
+	}
+	else if (AIlargemon.getWeakness() != myLargeMon.getType()) {
 		int AIcurrentHP = AIlargemon.getHP() - myLargeMon.getAttack();
-		AIcurrentHP = AIlargemon.getHP();
-		return AIcurrentHP;
+		AIlargemon.setHP(AIcurrentHP);
 		cout << "Your Attack was not very effective\n\n";
 	}
 }
 
-int AIspecAttack() {
+void Battle:: AIspecAttack() {
 	if (myLargeMon.getWeakness() == AIlargemon.getType()) {
 
 		int myLargeMonHP = myLargeMon.getHP() - AIlargemon.getSpecAttack();
-		myLargeMonHP = myLargeMon.getHP();
-		return myLargeMonHP;
+		myLargeMon.setHP(myLargeMonHP);
+		int LargeMonmissChance = myLargeMon.getMissChance() + 30;
+		myLargeMon.setMissChance(LargeMonmissChance);
+		cout << "Its Super Effective\n\n";
 	}
 	else {
 		int myLargeMonHP = myLargeMon.getHP() - AIlargemon.getAttack();
-		myLargeMonHP = myLargeMon.getHP();
-		return myLargeMonHP;
+		myLargeMon.setHP(myLargeMonHP);
+		cout << "Its Attack was not very effective\n\n";
 	}
 }
 
-int heal() {
+void Battle:: heal() {
 	int missChance = myLargeMon.getMissChance();
 	
 	int newHP = myLargeMon.getHP() * 1.6;
 	int newMissChance = missChance - 60;
 
-	newMissChance = missChance;
-	return newHP;
-	return newMissChance;
+	myLargeMon.setHP(newHP);
+	myLargeMon.setMissChance(newMissChance);
+	
 }
 
-int AIheal() {
+void Battle:: AIheal() {
 	int AImissChance = AIlargemon.getMissChance();
 
 	int newAIHP = AIlargemon.getHP() * 1.6;
 	int newAIMissChance = AImissChance - 60;
 
-	newAIMissChance = AImissChance;
-	return newAIHP;
-	return newAIMissChance;
+	AIlargemon.setHP(newAIHP);
+	AIlargemon.setMissChance(newAIMissChance);
+	
 }
 
+LargeMon Battle::returnAI() {
+	return AIlargemon;
+}
+
+LargeMon Battle::returnPlayer() {
+	return myLargeMon;
+}
 
 //TODO
 //here implement a do ..while loop so that you can keep taking turns as you select the attack options
@@ -214,3 +194,5 @@ int AIheal() {
 
 //TODO
 //display the outcome/winner
+
+

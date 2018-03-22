@@ -16,6 +16,8 @@ class LargeMon {
 		void setSize(float size);
 		void setHP(int baseHP);
 		int getHP();
+		void setMaxHP(int genMaxHP);
+		int getMaxHP();
 		void setAttack(int baseAttack);
 		int getAttack();
 		void setSpecAttack(int specAttack);
@@ -32,6 +34,7 @@ class LargeMon {
 		string weakness;
 		float size;
 		int baseHP;
+		int maxHP;
 		int baseAttack;
 		int specAttack;
 		int missChance;

@@ -28,10 +28,24 @@ void LargeMon::setSize(float gensize) {
 }
 void LargeMon::setHP(int genHP) {
 	baseHP = genHP;
+	if (baseHP > maxHP) {
+		baseHP = maxHP;
+	}
+	if (baseHP < 0) {
+		baseHP = 0;
+	}
+}
+
+void LargeMon::setMaxHP(int genMaxHP) {
+	maxHP = genMaxHP;
 }
 
 int LargeMon::getHP() {
 	return baseHP;
+}
+
+int LargeMon::getMaxHP() {
+	return maxHP;
 }
 
 void LargeMon::setAttack(int genAttack) {
@@ -51,7 +65,14 @@ int LargeMon::getSpecAttack() {
 }
 
 void LargeMon::setMissChance(int mChance) {
+	//sets miss Chance and its max and min values
 	missChance = mChance;
+	if (missChance < 0) {
+		missChance = 0;
+	}
+	if (missChance > 100) {
+		missChance = 100;
+	}
 }
 
 int LargeMon::getMissChance() {
@@ -71,6 +92,7 @@ void LargeMon::printLargeMonStats() {
 	cout << "AttackPoints :  " << baseAttack << endl;
 	cout << "SpecialAttack :  " << specAttack << endl;
 	cout << "MissChance :  " << missChance << endl;
+	cout << "\n";
 }
 
 void LargeMon::printAILargeMonStats() {
@@ -82,5 +104,6 @@ void LargeMon::printAILargeMonStats() {
 	cout << "AttackPoints :  " << baseAttack << endl;
 	cout << "SpecialAttack :  " << specAttack << endl;
 	cout << "MissChance :  " << missChance << endl;
+	cout << "\n";
 }
 
